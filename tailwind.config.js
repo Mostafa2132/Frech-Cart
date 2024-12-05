@@ -40,7 +40,11 @@ export default {
  
 
   },
-  // eslint-disable-next-line no-undef
+  
+  "engines": {
+  "node": ">=18.x"
+},
+ 
   plugins: [preline],
   darkMode:"class"
 }
