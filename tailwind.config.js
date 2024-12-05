@@ -1,4 +1,6 @@
 
+import preline from 'preline/plugin';
+
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -39,6 +41,6 @@ export default {
 
   },
   // eslint-disable-next-line no-undef
-  plugins: [require('preline/plugin')],
+  plugins: [preline],
   darkMode:"class"
 }
