@@ -4,14 +4,11 @@ import { useContext } from "react";
 import { cartContext } from "../../Context/Cart.context";
 import { Link } from "react-router-dom";
 
-
 export default function Card({ productInfo }) {
-  let { category, title, description, price, imageCover, ratingsAverage ,id } =
+  let { category, title, description, price, imageCover, ratingsAverage, id } =
     productInfo;
 
-    let {AddProductToCart,AddItemToWishList} = useContext(cartContext)
-
-
+  let { AddProductToCart, AddItemToWishList } = useContext(cartContext);
 
   return (
     <>
@@ -22,34 +19,30 @@ export default function Card({ productInfo }) {
             src={imageCover}
             alt="Card Image"
           />
-          <div
-     
-          className="layer opacity-0 group-hover:opacity-100 transition-all duration-700 absolute flex items-center justify-center gap-4 inset-0 bg-slate-400 rounded-t-xl bg-opacity-60">
-            <div
-                 onClick={()=>{
-                  AddItemToWishList({productId:id})
-                }}
-             className="icon transform translate-y-4 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-[.4s]">
-              <i className="fa-solid hover:scale-125 hover:rotate-12 transition-all duration-300 bg-primary-300 p-2 text-white cursor-pointer rounded-full fa-heart"></i>
-            </div>
-
-
-  
-
-
-
-            <Link to={`/product/${id}`}
-                
-            className="icon transform translate-y-4 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-[.6s]">
+          <div className="layer opacity-0 group-hover:opacity-100 transition-all duration-700 absolute flex items-center justify-center gap-4 inset-0 bg-slate-400 rounded-t-xl bg-opacity-60">
+            <Link
+              to={`/product/${id}`}
+              className="icon transform translate-y-4 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-[.6s]"
+            >
               <i className="fa-solid bg-primary-300 p-2 hover:scale-125 hover:rotate-12 transition-all duration-300 text-white cursor-pointer rounded-full fa-eye"></i>
             </Link>
           </div>
         </div>
 
         <div className="p-4 md:p-5">
-          <h3 className="text-lg font-bold line-clamp-1 text-gray-800 dark:text-white">
-            {title}
-          </h3>
+          <div className=" flex items-center justify-between">
+            <h3 className="text-lg font-bold line-clamp-1 text-gray-800 dark:text-white">
+              {title}
+            </h3>
+            <div
+              onClick={() => {
+                AddItemToWishList({ productId: id });
+              }}
+              className="icon transform translate-y-4 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-[.4s]"
+            >
+              <i className="fa-solid hover:scale-125 hover:rotate-12 transition-all duration-300 bg-primary-300 p-2 text-white cursor-pointer rounded-full fa-heart"></i>
+            </div>
+          </div>
           <h4 className="text-lg mt-2 font-bold text-primary-500">
             {category.name}
           </h4>
@@ -66,12 +59,15 @@ export default function Card({ productInfo }) {
             </div>
           </div>
           <button
-                   onClick={()=>{
-                    AddProductToCart({productId:id})
-                    }}
-          className="btn w-full group mt-4">Add To Cart <i className="fa-solid  p-2 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300 text-white cursor-pointer rounded-full fa-cart-plus"></i></button>
+            onClick={() => {
+              AddProductToCart({ productId: id });
+            }}
+            className="btn w-full group mt-4"
+          >
+            Add To Cart{" "}
+            <i className="fa-solid  p-2 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300 text-white cursor-pointer rounded-full fa-cart-plus"></i>
+          </button>
         </div>
-        
       </div>
     </>
   );
